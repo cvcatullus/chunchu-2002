@@ -68,7 +68,8 @@
     if (window.CC_YEARS) {
       const ys = $("#yearSel");
       ys.innerHTML = CC_YEARS.map((y) => `<option value="${y.year}"${y.year === META.year ? " selected" : ""}>${y.year}</option>`).join("");
-      ys.onchange = () => { location.href = `../${ys.value}/index.html#u=1`; };
+      ys.onchange = () => { location.href = (window.CC_YEARURL ? CC_YEARURL.replace("{y}", ys.value) : `../${ys.value}/`) + "index.html#u=1"; };
+      if (window.CC_HUBURL) $("#hubLink").href = CC_HUBURL + "index.html#u=1";
       $("#hubLink").hidden = false; ys.hidden = false;
     }
   }
